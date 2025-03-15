@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import * as data from "./data";
 import './App.css';
 
-
-
 const App = () => {
 
   const [playerCards, setPlayerCards] = useState([]);
@@ -26,6 +24,17 @@ const App = () => {
     setBoardCards(boardCards.filter(c => c !== card));
   };
 
+  useEffect(() => {
+    boardCards.forEach(card => {
+      console.log(Object.keys(card.costs));
+      // console.log(Object.keys(card.costs).forEach(key => card.costs[key]));
+    });
+  }, [boardCards]);
+
+  const calculate = (cardArray) => {
+
+  };
+
   return (
     <>
       <h1>7 Wonders Duel</h1>
@@ -42,6 +51,11 @@ const App = () => {
                 onClick={() => handleClick(card)}
               >
                 {card.title}
+                <br />
+                {JSON.stringify(card.costs)}
+                <br />
+                {/* {Object.keys(card.costs).forEach(key => `${card.costs[key]}`)} */}
+                {/* {Object.keys(card.cost) ? Object.keys(card.costs) : ''} */}
               </li>
             ))}
           </ul>
