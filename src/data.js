@@ -1,6 +1,3 @@
-// clay, stone, wood
-// glass, parchment
-
 // raw materials (brown) -- raw
 // manufactured goods (gray) -- manufactured
 // civilian buildings (blue) -- civilian
@@ -9,22 +6,6 @@
 // commercial buildings (yellow) -- commerce
 // military buildings (red) -- military
 // guilds (purple) -- guild
-
-
-// {
-//     title: 'glassworks',
-//     type: 'manufactured goods',
-//     produces: {
-//         glass: 1,
-//     },
-//     costs: {
-//         gold: 1,
-//     },
-//     chainsInto: '',
-//     chainsFrom: '',
-// },
-
-
 
 const cardsAge1 = [
     {
@@ -323,15 +304,6 @@ const cardColors = {
     military: '#BD151D',
     guild: '#835D99',
 };
-
-// raw materials (brown) -- raw
-// manufactured goods (gray) -- manufactured
-// civilian buildings (blue) -- civilian
-// scientific buildings (green) -- science
-    // globe, scales, sundial, pestle, metronome, quill, wheel
-// commercial buildings (yellow) -- commerce
-// military buildings (red) -- military
-// guilds (purple) -- guild
 
 export {
     cardsAge1,
