@@ -24,16 +24,27 @@ const App = () => {
     setBoardCards(boardCards.filter(c => c !== card));
   };
 
-  useEffect(() => {
-    boardCards.forEach(card => {
-      console.log(Object.keys(card.costs));
-      // console.log(Object.keys(card.costs).forEach(key => card.costs[key]));
-    });
-  }, [boardCards]);
+  // useEffect(() => {
+  //   boardCards.forEach(card => {
+  //     console.log(Object.keys(card.costs).map(key => `${key}: ${card.costs[key]}`));
+  //   });
+  // }, [boardCards]);
 
   const calculate = (cardArray) => {
-
+    // let productionObj = {};
+    for (let card of cardArray) {
+      for (let benefit in card.produces) {
+        console.log(benefit, card.produces[benefit]);
+      };
+    };
+    // return productionObj;
   };
+
+  useEffect(() => {
+    calculate(boardCards);
+  }, [boardCards]);
+
+
 
   return (
     <>
@@ -62,6 +73,11 @@ const App = () => {
         </div>
         <div>
           <h2>player cards:</h2>
+          <div>
+            <p>
+
+            </p>
+          </div>
           <ul>
             {playerCards.map((card, index) => (
               <li
