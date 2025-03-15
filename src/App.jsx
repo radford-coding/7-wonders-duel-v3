@@ -31,17 +31,22 @@ const App = () => {
   // }, [boardCards]);
 
   const calculate = (cardArray) => {
-    // let productionObj = {};
+    let productionObj = {};
     for (let card of cardArray) {
       for (let benefit in card.produces) {
-        console.log(benefit, card.produces[benefit]);
+        // console.log(benefit, card.produces[benefit]);
+        if (productionObj[benefit]) {
+          productionObj[benefit] += card.produces[benefit];
+        } else {
+          productionObj[benefit] = card.produces[benefit];
+        };
       };
     };
-    // return productionObj;
+    return productionObj;
   };
 
   useEffect(() => {
-    calculate(boardCards);
+    console.log(calculate(boardCards));
   }, [boardCards]);
 
 
@@ -52,6 +57,9 @@ const App = () => {
       <div className="container">
         <div>
           <h2>board cards:</h2>
+          <div>
+            {/* {Object.keys(calculate(boardCards)).map((k, i) => <p key={i}>{k}: {calculate(boardCards)[k]}</p>)} */}
+          </div>
           <ul>
             {boardCards.map((card, index) => (
               <li
@@ -64,9 +72,6 @@ const App = () => {
                 {card.title}
                 <br />
                 {JSON.stringify(card.costs)}
-                <br />
-                {/* {Object.keys(card.costs).forEach(key => `${card.costs[key]}`)} */}
-                {/* {Object.keys(card.cost) ? Object.keys(card.costs) : ''} */}
               </li>
             ))}
           </ul>
@@ -74,9 +79,7 @@ const App = () => {
         <div>
           <h2>player cards:</h2>
           <div>
-            <p>
-
-            </p>
+            {Object.keys(calculate(playerCards)).map((k, i) => <p key={i}>{k}: {calculate(playerCards)[k]}</p>)}
           </div>
           <ul>
             {playerCards.map((card, index) => (
@@ -93,6 +96,9 @@ const App = () => {
         </div>
         <div>
           <h2>AI cards:</h2>
+          <div>
+            {Object.keys(calculate(aiCards)).map((k, i) => <p key={i}>{k}: {calculate(aiCards)[k]}</p>)}
+          </div>
           <ul>
             {aiCards.map((card, index) => (
               <li
