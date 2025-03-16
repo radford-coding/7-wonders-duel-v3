@@ -31,3 +31,24 @@ li:hover {
 .container > div > div > p {
   max-width: 20vw;
 }
+
+.conflict {
+  width: 80vw;
+  height: 10vh;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.conflict-pawn {
+  background-color: red;
+  height: 100%;
+  width: calc(100% / 19);
+  border-radius: 100% / 50%;
+}
+
+.conflict-space {
+  border: 1px dashed gray;
+  border-radius: 100% / 50%;
+  height: 100%;
+  width: calc(100% / 19);
+}

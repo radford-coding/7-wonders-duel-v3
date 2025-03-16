@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as data from "./data";
 import './App.css';
+import Conflict from "./components/Conflict/Conflict";
 
 const App = () => {
 
@@ -13,7 +14,10 @@ const App = () => {
     player: 7,
     ai: 7,
   });
+  // start at index 9 (space #10 of 19)
+  const [military, setMilitary] = useState(9);
 
+  // start with age 1 cards
   useEffect(() => {
     setBoardCards(data.cardsAge1);
   }, []);
@@ -21,26 +25,32 @@ const App = () => {
   const handleBuy = (card) => {
     if (isPlayerTurn) {
       setPlayerCards([...playerCards, card]);
-      if (card.costs.gold) setCoins({...coins, player: coins.player - card.costs.gold});
+      if (card.costs.gold) setCoins({ ...coins, player: coins.player - card.costs.gold });
+      if (card.produces.shields) setMilitary(military + card.produces.shields);
       setIsPlayerTurn(!isPlayerTurn);
     } else {
       setAiCards([...aiCards, card]);
-      if (card.costs.gold) setCoins({...coins, ai: coins.ai - card.costs.gold});
+      if (card.costs.gold) setCoins({ ...coins, ai: coins.ai - card.costs.gold });
+      if (card.produces.shields) setMilitary(military - card.produces.shields);
       setIsPlayerTurn(!isPlayerTurn);
     };
     setBoardCards(boardCards.filter(c => c !== card));
   };
-  
+
+  // const handleSpend = (card, who) => {
+
+  // };
+
   const handleSell = (card) => {
     if (isPlayerTurn) {
       const numOfYellows = playerCards.filter(card => card.type === 'commerce').length;
       setDiscards([...discards, card]);
-      setCoins({...coins, player: coins.player + 2 + numOfYellows});
+      setCoins({ ...coins, player: coins.player + 2 + numOfYellows });
       setIsPlayerTurn(!isPlayerTurn);
     } else {
       const numOfYellows = aiCards.filter(card => card.type === 'commerce').length;
       setDiscards([...discards, card]);
-      setCoins({...coins, ai: coins.ai + 2 + numOfYellows});
+      setCoins({ ...coins, ai: coins.ai + 2 + numOfYellows });
       setIsPlayerTurn(!isPlayerTurn);
     };
     setBoardCards(boardCards.filter(c => c !== card));
@@ -65,11 +75,11 @@ const App = () => {
   //   console.log(calculate(boardCards));
   // }, [boardCards]);
 
-
-
   return (
     <>
       <h1>7 Wonders Duel</h1>
+      <Conflict military={military}></Conflict>
+      <p>turn: {isPlayerTurn ? 'player' : 'AI'}</p>
       <div className="container">
         <div>
           <h2>board cards:</h2>
@@ -115,7 +125,7 @@ const App = () => {
           </ul>
         </div>
         <div>
-        <h2>AI coins: {coins.ai}</h2>
+          <h2>AI coins: {coins.ai}</h2>
           <h2>AI cards:</h2>
           <div>
             {Object.keys(calculate(aiCards)).map((k, i) => <p key={i}>{k}: {calculate(aiCards)[k]}</p>)}
