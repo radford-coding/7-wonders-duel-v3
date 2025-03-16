@@ -7,6 +7,7 @@ const App = () => {
   const [playerCards, setPlayerCards] = useState([]);
   const [aiCards, setAiCards] = useState([]);
   const [boardCards, setBoardCards] = useState([]);
+  const [discards, setDiscards] = useState([]);
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [coins, setCoins] = useState({
     player: 7,
@@ -17,15 +18,29 @@ const App = () => {
     setBoardCards(data.cardsAge1);
   }, []);
 
-  const handleClick = (card) => {
+  const handleBuy = (card) => {
     if (isPlayerTurn) {
-      // if () {};
-      console.log('costs:', calculate(playerCards));
       setPlayerCards([...playerCards, card]);
-      setCoins({...coins, player: coins.player - card.costs.gold});
+      if (card.costs.gold) setCoins({...coins, player: coins.player - card.costs.gold});
       setIsPlayerTurn(!isPlayerTurn);
     } else {
       setAiCards([...aiCards, card]);
+      if (card.costs.gold) setCoins({...coins, ai: coins.ai - card.costs.gold});
+      setIsPlayerTurn(!isPlayerTurn);
+    };
+    setBoardCards(boardCards.filter(c => c !== card));
+  };
+  
+  const handleSell = (card) => {
+    if (isPlayerTurn) {
+      const numOfYellows = playerCards.filter(card => card.type === 'commerce').length;
+      setDiscards([...discards, card]);
+      setCoins({...coins, player: coins.player + 2 + numOfYellows});
+      setIsPlayerTurn(!isPlayerTurn);
+    } else {
+      const numOfYellows = aiCards.filter(card => card.type === 'commerce').length;
+      setDiscards([...discards, card]);
+      setCoins({...coins, ai: coins.ai + 2 + numOfYellows});
       setIsPlayerTurn(!isPlayerTurn);
     };
     setBoardCards(boardCards.filter(c => c !== card));
@@ -73,8 +88,8 @@ const App = () => {
                 <br />
                 {JSON.stringify(card.costs)}
                 <br />
-                <button onClick={() => handleClick(card)}>buy</button>
-                <button>sell</button>
+                <button onClick={() => handleBuy(card)}>buy</button>
+                <button onClick={() => handleSell(card)}>sell</button>
                 <button>wonder</button>
               </li>
             ))}
