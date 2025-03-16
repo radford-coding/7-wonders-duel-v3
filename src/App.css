@@ -1,8 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
 #root {
   width: 100vw;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 li {
@@ -23,6 +30,10 @@ li:hover {
   justify-content: space-evenly;
 }
 
+.container > div {
+  width: 30vw;
+}
+
 .container > div > ul {
   height: 80vh;
   overflow-y: auto;
@@ -33,22 +44,26 @@ li:hover {
 }
 
 .conflict {
-  width: 80vw;
-  height: 10vh;
-  display: flex;
-  flex-flow: row nowrap;
+  width: calc(2vh * 19);
+  display: grid;
+  grid-template-columns: repeat(19, calc(100% / 19));
+  grid-template-rows: repeat(2, 4vh);
+  border: 1px solid gray;
 }
 
 .conflict-pawn {
   background-color: red;
-  height: 100%;
-  width: calc(100% / 19);
-  border-radius: 100% / 50%;
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  border-radius: 50%;
 }
 
 .conflict-space {
   border: 1px dashed gray;
-  border-radius: 100% / 50%;
-  height: 100%;
-  width: calc(100% / 19);
+  border-radius: 50%;
+  height: 90%;
+  width: 90%;
+  margin: auto;
 }
+
