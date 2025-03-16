@@ -23,6 +23,11 @@ li:hover {
   justify-content: space-evenly;
 }
 
+.container > div > ul {
+  height: 80vh;
+  overflow-y: auto;
+}
+
 .container > div > div > p {
   max-width: 20vw;
 }
