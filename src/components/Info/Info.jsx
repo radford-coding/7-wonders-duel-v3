@@ -1,8 +1,12 @@
-const Info = (props) => {
+const Info = () => {
 
 
     return (
-        
+        <>
+            <p>
+                info
+            </p>
+        </>
     );
 };
 

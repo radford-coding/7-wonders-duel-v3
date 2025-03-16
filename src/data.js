@@ -295,12 +295,171 @@ const cardsAge3 = [
 
 const guilds = [];
 
+const wonders = [
+    {
+        title: 'the appian way',
+        costs: {
+            stone: 2,
+            clay: 2,
+            parchment: 1,
+        },
+        produces: {
+            points: 3,
+            gold: 3,
+            opponentGold: -3,
+        },
+        playAgain: true,
+    },
+    {
+        title: 'circus maximus',
+        costs: {
+            stone: 2,
+            wood: 1,
+            glass: 1,
+        },
+        produces: {
+            points: 3,
+            shields: 1,
+        },
+        playAgain: false,
+        discardOpponentManufactured: true,
+    },
+    {
+        title: 'the colossus',
+        costs: {
+            clay: 3,
+            glass: 1,
+        },
+        produces: {
+            points: 3,
+            shields: 2,
+        },
+        playAgain: false,
+    },
+    {
+        title: 'the great library',
+        costs: {
+            wood: 3,
+            glass: 1,
+            parchment: 1,
+        },
+        produces: {
+            points: 4,
+        },
+        playAgain: false,
+        chooseOneDiscardedProgressTokenFromThreeRandom: true,
+    },
+    {
+        title: 'the great lighthouse',
+        costs: {
+            wood: 1,
+            stone: 1,
+            parchment: 2,
+        },
+        produces: {
+            points: 4,
+            chooseOne: ['stone', 'clay', 'wood'],
+        },
+        playAgain: false,
+    },
+    {
+        title: 'the hanging gardens',
+        costs: {
+            wood: 2,
+            glass: 1,
+            parchment: 1,
+        },
+        produces: {
+            points: 3,
+            gold: 6,
+        },
+        playAgain: true,
+    },
+    {
+        title: 'the mausoleum',
+        costs: {
+            clay: 2,
+            glass: 2,
+            parchment: 1,
+        },
+        produces: {
+            points: 2,
+        },
+        playAgain: false,
+        constructOneDiscardedCard: true,
+    },
+    {
+        title: 'piraeus',
+        costs: {
+            wood: 2,
+            stone: 1,
+            clay: 1,
+        },
+        produces: {
+            points: 2,
+            chooseOne: ['glass', 'parchment'],
+        },
+        playAgain: true,
+    },
+    {
+        title: 'the pyramids',
+        costs: {
+            stone: 3,
+            parchment: 1,
+        },
+        produces: {
+            points: 9,
+        },
+        playAgain: false,
+    },
+    {
+        title: 'the sphinx',
+        costs: {
+            stone: 1,
+            clay: 1,
+            glass: 2,
+        },
+        produces: {
+            points: 6,
+        },
+        playAgain: true,
+    },
+    {
+        title: 'the statue of zeus',
+        costs: {
+            stone: 1,
+            wood: 1,
+            clay: 1,
+            parchment: 2,
+        },
+        produces: {
+            points: 3,
+            shields: 1,
+        },
+        playAgain: false,
+        discardOpponentRaw: true,
+    },
+    {
+        title: 'the temple of artemis',
+        costs: {
+            wood: 1,
+            stone: 1,
+            glass: 1,
+            parchment: 1,
+        },
+        produces: {
+            gold: 12,
+        },
+        playAgain: true,
+    },
+];
+
 const cardColors = {
     raw: '#622219',
-    manufactured: '#959491',
+    manufactured: '#5E5C5C',
     civilian: '#0078AF',
-    science: '#01A45C',
-    commerce: '#FCD501',
+    science: '#007041',
+    commerce: '#F47621',
     military: '#BD151D',
     guild: '#835D99',
 };
@@ -310,5 +469,6 @@ export {
     cardsAge2,
     cardsAge3,
     guilds,
+    wonders,
     cardColors,
 };
