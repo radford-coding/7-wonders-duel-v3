@@ -198,7 +198,7 @@ const cardsAge1 = [
         title: 'stone reserve',
         type: 'commerce',
         produces: {
-            buyable: 'stone',
+            buyable: ['stone'],
         },
         costs: {
             gold: 3,
@@ -210,7 +210,7 @@ const cardsAge1 = [
         title: 'clay reserve',
         type: 'commerce',
         produces: {
-            buyable: 'clay',
+            buyable: ['clay'],
         },
         costs: {
             gold: 3,
@@ -222,7 +222,7 @@ const cardsAge1 = [
         title: 'wood reserve',
         type: 'commerce',
         produces: {
-            buyable: 'wood',
+            buyable: ['wood'],
         },
         costs: {
             gold: 3,
@@ -274,7 +274,297 @@ const cardsAge1 = [
     },
 ];
 
-const cardsAge2 = [];
+const cardsAge2 = [
+    {
+        title: 'sawmill',
+        type: 'raw',
+        produces: {
+            wood: 2,
+        },
+        costs: {
+            gold: 2,
+        },
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'brickyard',
+        type: 'raw',
+        produces: {
+            clay: 2,
+        },
+        costs: {
+            gold: 2,
+        },
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'shelf quarry',
+        type: 'raw',
+        produces: {
+            stone: 2,
+        },
+        costs: {
+            gold: 2,
+        },
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'glassblower',
+        type: 'manufactured',
+        produces: {
+            glass: 1,
+        },
+        costs: {},
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'drying room',
+        type: 'manufactured',
+        produces: {
+            parchment: 1,
+        },
+        costs: {},
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'walls',
+        type: 'military',
+        produces: {
+            shields: 2,
+        },
+        costs: {
+            stone: 2,
+        },
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'horse breeders',
+        type: 'military',
+        produces: {
+            shields: 1,
+        },
+        costs: {
+            clay: 1,
+            wood: 1,
+        },
+        chainsInto: '',
+        chainsFrom: 'horseshoe',
+    },
+    {
+        title: 'barracks',
+        type: 'military',
+        produces: {
+            shields: 1,
+        },
+        costs: {
+            gold: 3,
+        },
+        chainsInto: '',
+        chainsFrom: 'sword',
+    },
+    {
+        title: 'archery range',
+        type: 'military',
+        produces: {
+            shields: 2,
+        },
+        costs: {
+            stone: 1,
+            wood: 1,
+            parchment: 1,
+        },
+        chainsInto: 'target',
+        chainsFrom: '',
+    },
+    {
+        title: 'parade ground',
+        type: 'military',
+        produces: {
+            shields: 2,
+        },
+        costs: {
+            clay: 2,
+            glass: 1,
+        },
+        chainsInto: 'galea',
+        chainsFrom: '',
+    },
+    {
+        title: 'library',
+        type: 'science',
+        produces: {
+            science: 'quill',
+            points: 2,
+        },
+        costs: {
+            stone: 1,
+            wood: 1,
+            glass: 1,
+        },
+        chainsInto: '',
+        chainsFrom: 'book',
+    },
+    {
+        title: 'dispensary',
+        type: 'science',
+        produces: {
+            science: 'pestle',
+            points: 2,
+        },
+        costs: {
+            clay: 2,
+            stone: 1,
+        },
+        chainsInto: '',
+        chainsFrom: 'gear',
+    },
+    {
+        title: 'school',
+        type: 'science',
+        produces: {
+            science: 'wheel',
+            points: 1,
+        },
+        costs: {
+            wood: 1,
+            parchment: 2,
+        },
+        chainsInto: 'harp',
+        chainsFrom: '',
+    },
+    {
+        title: 'laboratory',
+        type: 'science',
+        produces: {
+            science: 'metronome',
+            points: 1,
+        },
+        costs: {
+            wood: 1,
+            glass: 2,
+        },
+        chainsInto: 'lamp',
+        chainsFrom: '',
+    },
+    {
+        title: 'forum',
+        type: 'commerce',
+        produces: {
+            chooseOne: ['glass', 'parchment'],
+        },
+        costs: {
+            gold: 3,
+            clay: 1,
+        },
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'caravansery',
+        type: 'commerce',
+        produces: {
+            chooseOne: ['wood', 'clay', 'stone'],
+        },
+        costs: {
+            gold: 2,
+            glass: 1,
+            parchment: 1,
+        },
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'customs house',
+        type: 'commerce',
+        produces: {
+            buyable: ['parchment', 'glass'],
+        },
+        costs: {
+            gold: 4,
+        },
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'brewery',
+        type: 'commerce',
+        produces: {
+            gold: 6,
+        },
+        costs: {},
+        chainsInto: 'cask',
+        chainsFrom: '',
+    },
+    {
+        title: 'courthouse',
+        type: 'civilian',
+        produces: {
+            points: 5,
+        },
+        costs: {
+            wood: 2,
+            glass: 1,
+        },
+        chainsInto: '',
+        chainsFrom: '',
+    },
+    {
+        title: 'statue',
+        type: 'civilian',
+        produces: {
+            points: 4,
+        },
+        costs: {
+            clay: 2,
+        },
+        chainsInto: '',
+        chainsFrom: 'comedy',
+    },
+    {
+        title: 'temple',
+        type: 'civilian',
+        produces: {
+            points: 4,
+        },
+        costs: {
+            wood: 1,
+            parchment: 1,
+        },
+        chainsInto: '',
+        chainsFrom: 'moon',
+    },
+    {
+        title: 'aqueduct',
+        type: 'civilian',
+        produces: {
+            points: 5,
+        },
+        costs: {
+            stone: 3,
+        },
+        chainsInto: '',
+        chainsFrom: 'droplet',
+    },
+    {
+        title: 'rostrum',
+        type: 'civilian',
+        produces: {
+            points: 4,
+        },
+        costs: {
+            stone: 1,
+            wood: 1,
+        },
+        chainsInto: 'parthenon',
+        chainsFrom: '',
+    },
+];
 
 const cardsAge3 = [
     {
