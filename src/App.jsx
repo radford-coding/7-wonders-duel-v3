@@ -12,7 +12,9 @@ const App = () => {
   const [state, dispatch] = useReducer(cardReducer, { ...initialState, boardCards: data.cardsAge1 });
 
   const handleBuy = (card) => {
-    dispatch({ type: 'buyCard', card });
+    // if (card.isBuyableByPlayer) {
+      dispatch({ type: 'buyCard', card });
+    // };
   };
 
   const handleSell = (card) => {
@@ -35,6 +37,10 @@ const App = () => {
   //   };
   //   return productionObj;
   // };
+
+  const isBuyable = (card) => {
+    const boughtCards = state.isPlayerTurn ? state.playerCards : state.aiCards;
+  };
 
   // useEffect(() => {
   //   console.log(calculate(boardCards));
